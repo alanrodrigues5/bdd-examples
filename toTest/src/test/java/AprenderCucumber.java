@@ -1,4 +1,5 @@
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -70,9 +71,9 @@ public class AprenderCucumber {
 		entrega = cal.getTime();
 	}
 
-	@Então("a entrega será efetuada em {int}\\/{int}\\/{int}")
-	public void aEntregaSeráEfetuadaEm(int dia, int mes, int ano) {
-		Calendar cal = Calendar.getInstance();
+	@Então("a entrega será efetuada em (\\d{2}\\/\\d{2}\\/\\d{4})$")
+	public void aEntregaSeráEfetuadaEm(String data) {
+	/*	Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.DAY_OF_MONTH, dia);
 		cal.set(Calendar.MONTH, mes - 1);
 		cal.set(Calendar.YEAR, ano);
@@ -87,6 +88,10 @@ public class AprenderCucumber {
 		
 		System.out.println(strDate1+"\n" + strDate2);
 		 Assert.assertEquals(strDate1, strDate2);
-	}
+	 */
+		DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		String dataFormatada = format.format(entrega);
+		Assert.assertEquals(data , dataFormatada);
+		}
 
 }
