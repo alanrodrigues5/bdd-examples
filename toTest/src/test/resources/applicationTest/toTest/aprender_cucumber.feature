@@ -8,7 +8,7 @@ Funcionalidade: Aprender Cucumber
 Cenário: Deve executar a especificação 
 	Dado que criei o arquivo corretamente
 	Quando executa-lo
-	Então a especificação deve finalizar com sucesso
+	Então a especificação deve finalizar com sucessso
 
 Cenário: Deve incrementar contador
 	Dado que o valor do contador é 15
