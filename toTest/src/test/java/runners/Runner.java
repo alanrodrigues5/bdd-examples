@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 				 monochrome = true,
 				 snippets = SnippetType.CAMELCASE,
 				 features ="src/test/resources/feature/",
-				 glue ="runners")
+				 glue ="src/test/java/steps")
 
 public class Runner {
 
