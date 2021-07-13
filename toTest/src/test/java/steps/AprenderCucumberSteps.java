@@ -1,10 +1,10 @@
+package steps;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import javax.swing.JOptionPane;
 
 import org.junit.Assert;
 
@@ -12,7 +12,7 @@ import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
 
-public class AprenderCucumber {
+public class AprenderCucumberSteps {
 	private int contador = 0;
 	Date entrega = new Date();
 
@@ -54,8 +54,6 @@ public class AprenderCucumber {
 	 */
 	@Dado("que o prazo é dia {int}\\/{int}\\/{int}")
 	public void queOPrazoÉDia(int dia, int mes, int ano) {
-		JOptionPane.showMessageDialog(null, String.valueOf(dia) + String.valueOf(mes)+String.valueOf(ano) );
-
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.DAY_OF_MONTH, dia);
 		cal.set(Calendar.MONTH, mes - 1);
@@ -63,11 +61,16 @@ public class AprenderCucumber {
 		entrega = cal.getTime();
 	}
 
-	@Quando("a entrega atrasar em {int} dias")
-	public void aEntregaAtrasarEmDias(int int1) {
+	@Quando("^a entrega atrasar em (\\d+) (dia|dias|mes|meses)$")
+	public void aEntregaAtrasarEmDias(int int1, String tempo) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(entrega);
-		cal.add(Calendar.DAY_OF_MONTH, int1);
+		if(tempo.equals("dias")) {
+			cal.add(Calendar.DAY_OF_MONTH, int1);
+		}
+		if(tempo.equals("meses")) {
+			cal.add(Calendar.MONTH, int1);
+		}
 		entrega = cal.getTime();
 	}
 
