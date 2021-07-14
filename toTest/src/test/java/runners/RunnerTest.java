@@ -9,10 +9,12 @@ import org.junit.runner.RunWith;
 @CucumberOptions(plugin = "pretty", 
 				 monochrome = true,
 				 snippets = SnippetType.CAMELCASE,
-				 features ="src/test/resources/feature/",
-				 glue ="src/test/java/steps")
+				 features ="src/test/resources/feature",
+				 glue = "steps",
+				 tags = "not @ignore",
+				 dryRun = false)
 
-public class Runner {
+public class RunnerTest {
 
 }
 
